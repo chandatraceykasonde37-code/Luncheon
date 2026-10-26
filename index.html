@@ -1,11 +1,11 @@
-```html
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Elegant Luncheon Invitation</title>
+  <title>Mvano | Bring-a-Dish Luncheon</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -91,8 +91,8 @@
       width: 100%;
       height: 100%;
 
-      /* Show the complete photograph without cropping */
-      object-fit: contain;
+      /* Fill the invitation naturally; responsive rules below tune phone screens */
+      object-fit: cover;
       object-position: center center;
 
       opacity: 0;
@@ -167,6 +167,15 @@
       text-shadow:
         0 2px 3px rgba(40, 28, 12, 0.95),
         0 5px 18px rgba(0, 0, 0, 0.65);
+    }
+
+    .event-subtitle {
+      margin-top: -5px;
+      margin-bottom: 12px;
+      font-size: 12px;
+      letter-spacing: 4px;
+      color: #fff4d3;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
     }
 
     .title-line {
@@ -356,47 +365,49 @@
       text-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
     }
 
-    /* SLIDESHOW INDICATORS */
-
-    .slide-indicators {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 9px;
-
-      margin-top: 22px;
-    }
-
-    .slide-dot {
-      width: 7px;
-      height: 7px;
-
-      flex-shrink: 0;
-      border-radius: 50%;
-
-      border: 1px solid #ffe5a0;
-      background: transparent;
-
-      transition:
-        background 0.3s ease,
-        transform 0.3s ease;
-    }
-
-    .slide-dot.active {
-      background: #ffe5a0;
-      transform: scale(1.3);
-    }
-
     /* TABLETS AND PHONES */
 
     @media (max-width: 520px) {
       body {
-        padding: 12px 8px;
+        padding: 0;
+        min-height: 100svh;
       }
 
       .invitation {
-        min-height: 0;
-        padding: 38px 17px 28px;
+        width: 100%;
+        max-width: none;
+        min-height: 100svh;
+        padding: 28px 16px 24px;
+        border-radius: 0;
+        outline-offset: -7px;
+      }
+
+      .food-slide {
+        object-fit: cover;
+        object-position: center center;
+      }
+
+      .food-overlay {
+        background: rgba(35, 29, 22, 0.24);
+      }
+
+      .invitation-content {
+        max-width: 100%;
+      }
+
+      .script-title {
+        font-size: clamp(54px, 16vw, 76px);
+        line-height: 1.05;
+      }
+
+      .event-subtitle {
+        font-size: 10px;
+        letter-spacing: 2.5px;
+        margin-bottom: 10px;
+      }
+
+      .title-line {
+        margin-bottom: 18px;
       }
 
       .eyebrow {
@@ -434,14 +445,36 @@
         font-size: 17px;
       }
 
-      .slide-indicators {
-        gap: 8px;
-      }
     }
 
     @media (max-width: 350px) {
       .invitation {
-        padding: 34px 13px 25px;
+        padding: 24px 13px 20px;
+      }
+
+      .top-decoration {
+        margin-bottom: 10px;
+      }
+
+      .invitation-message {
+        font-size: 18px;
+      }
+
+      .countdown-heading {
+        letter-spacing: 2px;
+        font-size: 9px;
+      }
+
+      .event-time {
+        margin-bottom: 18px;
+      }
+
+      .venue-name {
+        margin-bottom: 18px;
+      }
+
+      .bottom-decoration {
+        margin-top: 16px;
       }
 
       .countdown {
@@ -463,8 +496,7 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .food-slide,
-      .slide-dot {
+      .food-slide {
         transition: none;
       }
     }
@@ -497,23 +529,22 @@
 
       <div class="top-decoration">✦ ❧ ✦</div>
 
-      <p class="eyebrow">You're invited to a</p>
+      <p class="eyebrow">You're invited to</p>
 
-      <h1 class="script-title">Luncheon</h1>
+      <h1 class="script-title">Mvano</h1>
+      <p class="eyebrow event-subtitle">Bring-a-Dish Luncheon</p>
 
       <div class="title-line"></div>
 
       <p class="invitation-message">
-        You are warmly invited to join us for an
-        <strong>elegant luncheon</strong>,
-        a beautiful afternoon of delicious food,
-        wonderful company, and unforgettable moments.
+        Bring a dish to share and join us for a lovely afternoon
+        of delicious food, laughter, and wonderful company.
       </p>
 
       <!-- COUNTDOWN -->
 
       <p class="countdown-heading">
-        The celebration begins in
+        Countdown to the Bring-a-Dish Luncheon
       </p>
 
       <div class="countdown" aria-label="Countdown to the luncheon">
@@ -556,19 +587,6 @@
         Good food, beautiful moments,<br>
         and wonderful company.
       </p>
-
-      <!-- SLIDESHOW INDICATORS -->
-
-      <div class="slide-indicators" aria-hidden="true">
-
-        <span class="slide-dot active"></span>
-        <span class="slide-dot"></span>
-        <span class="slide-dot"></span>
-        <span class="slide-dot"></span>
-        <span class="slide-dot"></span>
-        <span class="slide-dot"></span>
-
-      </div>
 
       <div class="bottom-decoration">✧ ───── ✧</div>
 
@@ -623,10 +641,6 @@
       document.querySelectorAll('.food-slide')
     );
 
-    const dots = Array.from(
-      document.querySelectorAll('.slide-dot')
-    );
-
     let currentSlide = 0;
 
     function showSlide(index) {
@@ -634,9 +648,6 @@
         slide.classList.toggle('active', i === index);
       });
 
-      dots.forEach((dot, i) => {
-        dot.classList.toggle('active', i === index);
-      });
     }
 
     /* Report missing image files */
@@ -665,4 +676,3 @@
 
 </body>
 </html>
-```
