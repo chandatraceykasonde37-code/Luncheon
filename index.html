@@ -1,12 +1,15 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Elegant Luncheon Invitation</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 
   <style>
@@ -16,35 +19,54 @@
       padding: 0;
     }
 
+    :root {
+      --gold: #d4af37;
+      --light-gold: #f5df99;
+      --cream: #fffaf0;
+      --dark-text: #332a20;
+    }
+
     body {
       min-height: 100vh;
       padding: 25px 14px;
+
       display: flex;
       justify-content: center;
       align-items: flex-start;
-      background: linear-gradient(135deg, #180b0d, #321316, #10090a);
-      color: #fff8e9;
+
+      background: #f3eee5;
+      color: var(--cream);
+
       font-family: 'Lato', sans-serif;
     }
+
+    /* MAIN INVITATION */
 
     .invitation {
       position: relative;
       isolation: isolate;
+
       width: 100%;
       max-width: 740px;
       min-height: 850px;
+
       padding: 48px 30px 35px;
-      border: 2px solid #d4af37;
-      outline: 1px solid rgba(212, 175, 55, 0.55);
+
+      border: 2px solid var(--gold);
+      outline: 1px solid rgba(212, 175, 55, 0.65);
       outline-offset: -9px;
+
       border-radius: 5px;
       overflow: hidden;
+
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
-      background: #321316;
-      box-shadow: 0 15px 60px rgba(0, 0, 0, 0.5);
+
+      background: #e8e0d2;
+
+      box-shadow: 0 15px 60px rgba(0, 0, 0, 0.18);
     }
 
     /* FOOD SLIDESHOW */
@@ -53,23 +75,28 @@
       position: absolute;
       inset: 0;
       z-index: 0;
+
       overflow: hidden;
-      background: #180b0d;
+      background: #e8e0d2;
+
       pointer-events: none;
     }
 
     .food-slide {
       position: absolute;
       inset: 0;
+
       display: block;
+
       width: 100%;
       height: 100%;
 
-      /* Show the complete photograph */
+      /* Show the complete photograph without cropping */
       object-fit: contain;
       object-position: center center;
 
       opacity: 0;
+
       transition: opacity 1.2s ease-in-out;
     }
 
@@ -77,16 +104,19 @@
       opacity: 1;
     }
 
+    /*
+      VERY LIGHT NEUTRAL OVERLAY
+
+      The food photographs remain bright and natural.
+      The subtle warm tint avoids the heavy wine colour.
+    */
+
     .food-overlay {
       position: absolute;
       inset: 0;
       z-index: 1;
-      background: linear-gradient(
-        to bottom,
-        rgba(25, 8, 10, 0.76),
-        rgba(35, 10, 13, 0.58) 45%,
-        rgba(20, 7, 9, 0.80)
-      );
+
+      background: rgba(245, 239, 228, 0.08);
     }
 
     /* INVITATION CONTENT */
@@ -94,18 +124,22 @@
     .invitation-content {
       position: relative;
       z-index: 2;
+
       width: 100%;
       max-width: 600px;
+
       display: flex;
       flex-direction: column;
       align-items: center;
     }
 
     .top-decoration {
-      color: #e6c76a;
+      color: var(--light-gold);
       font-size: 23px;
       letter-spacing: 10px;
       margin-bottom: 20px;
+
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.65);
     }
 
     .eyebrow {
@@ -113,41 +147,58 @@
       letter-spacing: 5px;
       line-height: 1.8;
       text-transform: uppercase;
-      color: #f0d98d;
+
+      color: #fff4d3;
       margin-bottom: 20px;
+
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.85);
     }
 
     .script-title {
       font-family: 'Great Vibes', cursive;
+
       font-size: clamp(58px, 11vw, 94px);
       font-weight: 400;
-      color: #f3d987;
       line-height: 1.2;
+
+      color: #ffe5a0;
       margin-bottom: 12px;
-      text-shadow: 0 3px 18px rgba(0, 0, 0, 0.65);
+
+      text-shadow:
+        0 2px 3px rgba(40, 28, 12, 0.95),
+        0 5px 18px rgba(0, 0, 0, 0.65);
     }
 
     .title-line {
       width: 100px;
       height: 1px;
-      background: #d4af37;
+
+      background: var(--light-gold);
       margin: 4px auto 25px;
+
+      box-shadow: 0 1px 5px rgba(0, 0, 0, 0.7);
     }
 
     .invitation-message {
       font-family: 'Cormorant Garamond', serif;
+
       font-size: clamp(19px, 4vw, 25px);
       line-height: 1.7;
       font-weight: 500;
-      color: #fff8e9;
+
+      color: #ffffff;
       max-width: 500px;
+
       margin-bottom: 18px;
-      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+
+      text-shadow:
+        0 2px 4px rgba(0, 0, 0, 0.95),
+        0 0 12px rgba(0, 0, 0, 0.65);
     }
 
     .invitation-message strong {
-      color: #f3d987;
-      font-weight: 600;
+      color: #ffe5a0;
+      font-weight: 700;
     }
 
     /* COUNTDOWN */
@@ -156,44 +207,62 @@
       font-size: 10px;
       letter-spacing: 4px;
       text-transform: uppercase;
-      color: #f0d98d;
+
+      color: #fff0c2;
+
       margin-top: 15px;
       margin-bottom: 17px;
-      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+
+      text-shadow: 0 2px 7px rgba(0, 0, 0, 0.95);
     }
 
     .countdown {
       width: 100%;
       max-width: 460px;
+
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 10px;
+
       margin-bottom: 30px;
     }
 
     .countdown-box {
       padding: 14px 5px;
-      border: 1px solid rgba(212, 175, 55, 0.8);
-      background: rgba(24, 8, 10, 0.78);
-      backdrop-filter: blur(5px);
-      -webkit-backdrop-filter: blur(5px);
+
+      border: 1px solid rgba(212, 175, 55, 0.95);
+
+      /*
+        Translucent charcoal keeps the numbers readable
+        while allowing the photographs to remain visible.
+      */
+
+      background: rgba(43, 39, 33, 0.66);
+
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
     }
 
     .countdown-number {
       display: block;
+
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(26px, 5vw, 38px);
       line-height: 1.1;
-      color: #f3d987;
+
+      color: #ffe5a0;
     }
 
     .countdown-label {
       display: block;
+
       margin-top: 7px;
+
       font-size: 9px;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: #fff8e9;
+
+      color: #ffffff;
     }
 
     /* EVENT DETAILS */
@@ -202,63 +271,89 @@
       width: 80%;
       max-width: 360px;
       height: 1px;
+
       background: linear-gradient(
         to right,
         transparent,
-        #d4af37,
+        #f5df99,
         transparent
       );
+
       margin-bottom: 24px;
     }
 
     .event-date {
       font-family: 'Cormorant Garamond', serif;
+
       font-size: clamp(28px, 6vw, 40px);
       font-weight: 600;
       letter-spacing: 2px;
-      color: #f3d987;
+
+      color: #ffe5a0;
       margin-bottom: 8px;
-      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+
+      text-shadow:
+        0 2px 4px rgba(0, 0, 0, 0.95),
+        0 0 12px rgba(0, 0, 0, 0.65);
     }
 
     .event-time {
       font-size: 12px;
       letter-spacing: 4px;
-      color: #fff8e9;
+
+      color: #ffffff;
       margin-bottom: 25px;
+
+      text-shadow: 0 2px 7px rgba(0, 0, 0, 0.95);
     }
 
     .venue-label {
       font-size: 10px;
       letter-spacing: 4px;
       text-transform: uppercase;
-      color: #f0d98d;
+
+      color: #fff0c2;
       margin-bottom: 8px;
+
+      text-shadow: 0 2px 7px rgba(0, 0, 0, 0.95);
     }
 
     .venue-name {
       font-family: 'Cormorant Garamond', serif;
+
       font-size: clamp(23px, 5vw, 32px);
       font-weight: 500;
-      color: #fff8e9;
+
+      color: #ffffff;
       margin-bottom: 25px;
-      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+
+      text-shadow:
+        0 2px 4px rgba(0, 0, 0, 0.95),
+        0 0 12px rgba(0, 0, 0, 0.65);
     }
 
     .footer-message {
       font-family: 'Cormorant Garamond', serif;
+
       font-size: 19px;
       font-style: italic;
       line-height: 1.6;
-      color: #f3d987;
-      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+
+      color: #ffe5a0;
+
+      text-shadow:
+        0 2px 4px rgba(0, 0, 0, 0.95),
+        0 0 12px rgba(0, 0, 0, 0.65);
     }
 
     .bottom-decoration {
-      color: #d4af37;
+      color: #f5df99;
       font-size: 20px;
       letter-spacing: 8px;
+
       margin-top: 25px;
+
+      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
     }
 
     /* SLIDESHOW INDICATORS */
@@ -268,21 +363,27 @@
       justify-content: center;
       align-items: center;
       gap: 9px;
+
       margin-top: 22px;
     }
 
     .slide-dot {
       width: 7px;
       height: 7px;
+
       flex-shrink: 0;
       border-radius: 50%;
-      border: 1px solid #f3d987;
+
+      border: 1px solid #ffe5a0;
       background: transparent;
-      transition: background 0.3s ease, transform 0.3s ease;
+
+      transition:
+        background 0.3s ease,
+        transform 0.3s ease;
     }
 
     .slide-dot.active {
-      background: #f3d987;
+      background: #ffe5a0;
       transform: scale(1.3);
     }
 
@@ -332,6 +433,10 @@
       .footer-message {
         font-size: 17px;
       }
+
+      .slide-indicators {
+        gap: 8px;
+      }
     }
 
     @media (max-width: 350px) {
@@ -370,10 +475,11 @@
 
   <main class="invitation">
 
-    <!-- SIX FOOD IMAGES -->
-    <!-- Keep all six images beside index.html -->
+    <!-- FOOD PHOTOGRAPHS -->
+    <!-- Keep food1.jpeg through food6.jpeg beside index.html -->
 
     <div class="food-slideshow" aria-hidden="true">
+
       <img src="./food1.jpeg" class="food-slide active" alt="">
       <img src="./food2.jpeg" class="food-slide" alt="">
       <img src="./food3.jpeg" class="food-slide" alt="">
@@ -382,6 +488,7 @@
       <img src="./food6.jpeg" class="food-slide" alt="">
 
       <div class="food-overlay"></div>
+
     </div>
 
     <!-- INVITATION CONTENT -->
@@ -403,7 +510,11 @@
         wonderful company, and unforgettable moments.
       </p>
 
-      <p class="countdown-heading">The celebration begins in</p>
+      <!-- COUNTDOWN -->
+
+      <p class="countdown-heading">
+        The celebration begins in
+      </p>
 
       <div class="countdown" aria-label="Countdown to the luncheon">
 
@@ -429,6 +540,8 @@
 
       </div>
 
+      <!-- EVENT DETAILS -->
+
       <div class="date-divider"></div>
 
       <p class="event-date">November 07, 2026</p>
@@ -444,18 +557,23 @@
         and wonderful company.
       </p>
 
+      <!-- SLIDESHOW INDICATORS -->
+
       <div class="slide-indicators" aria-hidden="true">
+
         <span class="slide-dot active"></span>
         <span class="slide-dot"></span>
         <span class="slide-dot"></span>
         <span class="slide-dot"></span>
         <span class="slide-dot"></span>
         <span class="slide-dot"></span>
+
       </div>
 
       <div class="bottom-decoration">✧ ───── ✧</div>
 
     </div>
+
   </main>
 
   <script>
@@ -463,10 +581,12 @@
 
     // November 7, 2026, at 13:00 local time.
     const eventDate = new Date(2026, 10, 7, 13, 0, 0).getTime();
+
     const heading = document.querySelector('.countdown-heading');
 
     function updateCountdown() {
       const difference = eventDate - Date.now();
+
       const ids = ['days', 'hours', 'minutes', 'seconds'];
 
       if (difference <= 0) {
@@ -475,6 +595,7 @@
         });
 
         heading.textContent = 'The celebration has begun!';
+
         return;
       }
 
@@ -485,20 +606,26 @@
         Math.floor((difference / 1000) % 60)
       ];
 
-      ids.forEach((id, i) => {
+      ids.forEach((id, index) => {
         document.getElementById(id).textContent =
-          String(values[i]).padStart(2, '0');
+          String(values[index]).padStart(2, '0');
       });
     }
 
     updateCountdown();
+
     setInterval(updateCountdown, 1000);
 
 
     /* AUTOMATIC FOOD SLIDESHOW */
 
-    const slides = Array.from(document.querySelectorAll('.food-slide'));
-    const dots = Array.from(document.querySelectorAll('.slide-dot'));
+    const slides = Array.from(
+      document.querySelectorAll('.food-slide')
+    );
+
+    const dots = Array.from(
+      document.querySelectorAll('.slide-dot')
+    );
 
     let currentSlide = 0;
 
@@ -512,6 +639,8 @@
       });
     }
 
+    /* Report missing image files */
+
     slides.forEach(slide => {
       slide.addEventListener('error', () => {
         console.error(
@@ -521,15 +650,19 @@
       });
     });
 
+    /* Change the image every 5 seconds */
+
     if (slides.length > 0) {
       showSlide(currentSlide);
 
       setInterval(() => {
         currentSlide = (currentSlide + 1) % slides.length;
+
         showSlide(currentSlide);
-      }, 3000);
+      }, 5000);
     }
   </script>
 
 </body>
 </html>
+```
